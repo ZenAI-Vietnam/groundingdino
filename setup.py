@@ -1,0 +1,38 @@
+from setuptools import setup, find_packages
+
+setup(
+    name="groundingdino",
+    version="0.1.0",
+    description="Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection",
+    long_description=open("README.md").read(),
+    long_description_content_type="text/markdown",
+    author="IDEA Research",
+    author_email="shilong.liu@outlook.com",
+    url="https://github.com/IDEA-Research/GroundingDINO",
+    packages=find_packages(),
+    install_requires=[
+        "torch>=1.10.0",
+        "torchvision>=0.11.0",
+        "timm",
+        "transformers>=4.18.0",
+        "pycocotools",
+        "scipy",
+        "numpy",
+        "opencv-python",
+        "supervision",
+        "addict",
+        "yapf",
+        "charset-normalizer",
+    ],
+    python_requires=">=3.8",
+    classifiers=[
+        "Development Status :: 3 - Alpha",
+        "Intended Audience :: Science/Research",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Topic :: Scientific/Engineering :: Artificial Intelligence",
+        "License :: OSI Approved :: Apache Software License",
+    ],
+)
