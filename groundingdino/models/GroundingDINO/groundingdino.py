@@ -64,6 +64,8 @@ class GroundingDINO(nn.Module):
         text_encoder_type="bert-base-uncased",
         sub_sentence_present=True,
         max_text_len=256,
+        use_safetensors=True,
+        local_files_only=True
     ):
         """Initializes the model.
         Parameters:
@@ -94,8 +96,16 @@ class GroundingDINO(nn.Module):
         self.dn_labelbook_size = dn_labelbook_size
 
         # bert
-        self.tokenizer = get_tokenlizer.get_tokenlizer(text_encoder_type)
-        self.bert = get_tokenlizer.get_pretrained_language_model(text_encoder_type)
+        self.tokenizer = get_tokenlizer.get_tokenlizer(
+            text_encoder_type, 
+            use_safetensors=use_safetensors,
+            local_files_only=local_files_only
+        )
+        self.bert = get_tokenlizer.get_pretrained_language_model(
+            text_encoder_type, 
+            use_safetensors=use_safetensors,
+            local_files_only=local_files_only
+        )
         self.bert.pooler.dense.weight.requires_grad_(False)
         self.bert.pooler.dense.bias.requires_grad_(False)
         self.bert = BertModelWarper(bert_model=self.bert)
@@ -380,6 +390,8 @@ def build_groundingdino(args):
         text_encoder_type=args.text_encoder_type,
         sub_sentence_present=sub_sentence_present,
         max_text_len=args.max_text_len,
+        use_safetensors=args.use_safetensors,
+        local_files_only=args.local_files_only
     )
 
     return model

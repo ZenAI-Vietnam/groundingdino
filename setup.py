@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="groundingdino",
-    version="0.1.1",
+    version="0.1.2",
     description="Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
