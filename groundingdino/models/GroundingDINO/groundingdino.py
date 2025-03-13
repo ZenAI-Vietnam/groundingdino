@@ -64,8 +64,8 @@ class GroundingDINO(nn.Module):
         text_encoder_type="bert-base-uncased",
         sub_sentence_present=True,
         max_text_len=256,
-        use_safetensors=True,
-        local_files_only=True
+        use_safetensors=False,
+        local_files_only=False
     ):
         """Initializes the model.
         Parameters:
