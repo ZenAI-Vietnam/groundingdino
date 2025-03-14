@@ -24,13 +24,13 @@ def get_tokenlizer(text_encoder_type, use_safetensors=True, local_files_only=Tru
 
 
 def get_pretrained_language_model(text_encoder_type, use_safetensors=True, local_files_only=True):
-    if text_encoder_type == "bert-base-uncased" or (os.path.isdir(text_encoder_type) and os.path.exists(text_encoder_type)):
+    if text_encoder_type == "bert-base-uncased" or text_encoder_type == "google-bert/bert-base-uncased" or (os.path.isdir(text_encoder_type) and os.path.exists(text_encoder_type)):
         return BertModel.from_pretrained(
             text_encoder_type, 
             use_safetensors=use_safetensors,
             local_files_only=local_files_only
         )
-    if text_encoder_type == "roberta-base":
+    if text_encoder_type == "roberta-base" or text_encoder_type == "FacebookAI/roberta-base":
         return RobertaModel.from_pretrained(
             text_encoder_type,
             use_safetensors=use_safetensors,
